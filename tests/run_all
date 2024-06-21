@@ -1,0 +1,8 @@
+#!/bin/bash
+
+all=`ls $1/test_*`
+for test in $all; do
+    echo ----------$'\t'$(basename "$test")$'\t'----------
+    $test
+    echo $'\n'
+done
