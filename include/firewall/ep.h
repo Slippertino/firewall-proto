@@ -1,11 +1,14 @@
 #pragma once
 
+#include <limits.h>
 #include <netinet/in.h>
 #include <firewall/net.h>
 
-typedef int port_t;
+typedef uint32_t port_t;
 
-#define ANY_PORT -1
+port_t port_from_network(port_t port);
+
+#define ANY_PORT UINT32_MAX
 
 typedef struct {
     net_t host;

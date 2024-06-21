@@ -10,12 +10,14 @@ int read_session(session_t *res) {
     src.mask = dest.mask = MAX_NET_MASK;
     int proto, ec = 0;
     while(1) {
-        ec = scanf("%s %s %d %d %d", src.ip, dest.ip, &src.port, &dest.port, &proto);
+        ec = scanf("%s %s %u %u %d", src.ip, dest.ip, &src.port, &dest.port, &proto);
         if (ec != EOF)
             break;
         if (ec == EOF && errno != EINTR) 
             return ec;
     } 
+    src.port = port_from_network(src.port);
+    dest.port = port_from_network(dest.port);
     ec = session_create(&src, &dest, proto, res);
     if (ec) {
         errno = ec;

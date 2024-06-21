@@ -15,7 +15,7 @@ static ep_entry_t create_entry(const char *ip, mask_t mask, port_t port) {
 }
 
 static ep_t create_ep(ipv4_t ip, mask_t mask, port_t port) {
-    ep_t ep = { { ip, mask }, htonl(port) };
+    ep_t ep = { { ip, mask }, port };
     return ep;
 }
 
@@ -30,8 +30,8 @@ static void test_ep_create(ep_entry_t in, ep_t out, int exp) {
 
 int main(void) {
     test_ep_create(create_entry("10.0.1.2", 32, 80), create_ep(0x0201000a, 32, 80), 0);
-    test_ep_create(create_entry("10.0.1.2", 32, -1), create_ep(0x0201000a, 32, -1), 0);
-    test_ep_create(create_entry("10.0.1.2", 32, -222), create_ep(0, 0, 0), EINVAL);
+    test_ep_create(create_entry("10.0.1.2", 32, ANY_PORT), create_ep(0x0201000a, 32, ANY_PORT), 0);
+    test_ep_create(create_entry("10.0.1.2", 32, 222222), create_ep(0, 0, 0), EINVAL);
     test_ep_create(create_entry("10.0.1.2", 32, UINT16_MAX + 1), create_ep(0, 0, 0), EINVAL);
     test_ep_create(create_entry("10.0.1.2333", 32, 80), create_ep(0, 0, 0), EINVAL);
     

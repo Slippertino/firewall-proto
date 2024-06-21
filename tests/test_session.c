@@ -15,7 +15,7 @@ static ep_entry_t create_entry(const char *ip, mask_t mask, port_t port) {
 }
 
 static ep_t create_ep(ipv4_t ip, mask_t mask, port_t port) {
-    ep_t ep = { { ip, mask }, htonl(port) };
+    ep_t ep = { { ip, mask }, port };
     return ep;
 }
 
@@ -60,7 +60,7 @@ int main(void) {
     
     test_session_create(
         create_entry("0.0.0.0", 32, 80),
-        create_entry("0.0.0.0", 32, -100),
+        create_entry("0.0.0.0", 32, 100000),
         -1,
         create_session(
             create_ep(0, 0, 0),

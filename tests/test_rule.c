@@ -15,7 +15,7 @@ static ep_entry_t create_entry(const char *ip, mask_t mask, port_t port) {
 }
 
 static ep_t create_ep(ipv4_t ip, mask_t mask, port_t port) {
-    ep_t ep = { { ip, mask }, htonl(port) };
+    ep_t ep = { { ip, mask }, port };
     return ep;
 }
 

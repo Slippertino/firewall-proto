@@ -24,7 +24,7 @@ void generate_net(net_t *net) {
 
 void generate_ep(ep_t *ep) {
     generate_net(&ep->host);
-    ep->port = gen(ANY_PORT, USHRT_MAX);
+    ep->port = htons(gen(0, UINT16_MAX));
 }
 
 void generate_session(session_t *session) {

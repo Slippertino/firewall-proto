@@ -3,10 +3,14 @@
 #include <stdio.h>
 #include <firewall/ep.h>
 
+port_t port_from_network(port_t port) {
+    return port <= UINT16_MAX
+        ? ntohl(port) >> (CHAR_BIT * sizeof(port) / 2)
+        : port;
+}
+
 static int validate_port(port_t port) {
-    int res = 
-        (port >= 0 && port <= USHRT_MAX) || 
-        port == ANY_PORT;
+    int res = port <= UINT16_MAX || port == ANY_PORT;
     return res ? 0 : EINVAL;
 }
 
@@ -18,7 +22,7 @@ int ep_create(const ep_entry_t *entry, ep_t *res) {
         ec = validate_port(port);
     if (!ec) {
         res->host = net;
-        res->port = htonl(port);
+        res->port = port;
     }
     return ec;
 }
@@ -32,10 +36,10 @@ int ep_equal(const ep_t *ep1, const ep_t *ep2) {
 void ep_serialize(const ep_t *ep, char *buffer) {
     char net_buffer[30], port_buffer[6];
     net_serialize(&ep->host, net_buffer);
-    port_t port = ntohl(ep->port);
+    port_t port = ep->port;
     if (port == ANY_PORT)
         sprintf(port_buffer, "%s", "*");
     else
-        sprintf(port_buffer, "%d", port);
+        sprintf(port_buffer, "%u", port);
     sprintf(buffer, "[%s, %s]", net_buffer, port_buffer);
 }

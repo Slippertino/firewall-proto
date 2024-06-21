@@ -12,12 +12,12 @@ Loaded new rule : { [*, 80] --> tcp --> [*, 80], status: drop }
 Loaded new rule : { [*, 80] --> udp --> [*, 80], status: accept }
 Loaded new rule : { [*, 80] --> tcp --> [*, *], status: accept }
 Firewall rules were successfully loaded.
-Packet [10.0.1.12, 14640] --> tcp --> [1.1.1.1, 5000] is DROP by reason : no rule matched
-Packet [1.1.1.1, 5000] --> tcp --> [10.0.1.12, 14640] is DROP by reason : no rule matched
-Packet [10.0.2.12, 1111] --> tcp --> [8.8.8.8, 2222] is ACCEPT by reason : { [10.0.2.12, *] --> tcp --> [8.8.8.8, *], status: accept }
-Packet [127.0.0.1, 33] --> udp --> [234.21.23.33, 333] is ACCEPT by reason : { [127.0.0.0/8, *] --> udp --> [*, *], status: accept }
-Packet [10.0.5.234, 3243] --> tcp --> [10.0.9.1, 32432] is ACCEPT by reason : { [10.0.5.0/24, *] --> tcp --> [10.0.9.1, *], status: accept }
-Packet [10.0.6.234, 3243] --> tcp --> [10.0.9.1, 32432] is DROP by reason : no rule matched
+Packet [10.0.1.12, 12345] --> tcp --> [1.1.1.1, 34835] is DROP by reason : no rule matched
+Packet [1.1.1.1, 34835] --> tcp --> [10.0.1.12, 12345] is DROP by reason : no rule matched
+Packet [10.0.2.12, 22276] --> tcp --> [8.8.8.8, 44552] is ACCEPT by reason : { [10.0.2.12, *] --> tcp --> [8.8.8.8, *], status: accept }
+Packet [127.0.0.1, 8448] --> udp --> [234.21.23.33, 19713] is ACCEPT by reason : { [127.0.0.0/8, *] --> udp --> [*, *], status: accept }
+Packet [10.0.5.234, 43788] --> tcp --> [10.0.9.1, 45182] is ACCEPT by reason : { [10.0.5.0/24, *] --> tcp --> [10.0.9.1, *], status: accept }
+Packet [10.0.6.234, 43788] --> tcp --> [10.0.9.1, 45182] is DROP by reason : no rule matched
 Packet [11.11.11.11, 80] --> udp --> [22.22.22.22, 80] is ACCEPT by reason : { [*, 80] --> udp --> [*, 80], status: accept }
 Packet [11.11.11.11, 80] --> tcp --> [22.22.22.22, 80] is DROP by reason : { [*, 80] --> tcp --> [*, 80], status: drop }
-Packet [11.11.11.11, 80] --> tcp --> [22.22.22.22, 234] is ACCEPT by reason : { [*, 80] --> tcp --> [*, *], status: accept }
+Packet [11.11.11.11, 80] --> tcp --> [22.22.22.22, 59904] is ACCEPT by reason : { [*, 80] --> tcp --> [*, *], status: accept }
