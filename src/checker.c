@@ -12,8 +12,7 @@ status_t check(session_t *target, rule_t **matched_rule) {
             status = cur->rule.status;
             if (matched_rule)
                 *matched_rule = rule;
-            if (status == DROP)
-                break;
+            break;
         }
         cur = cur->next;
     }

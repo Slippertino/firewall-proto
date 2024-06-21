@@ -133,7 +133,7 @@ int main(void) {
             create_entry("8.8.8.8", 32, 13243),
             IPPROTO_TCP
         ),
-        DROP
+        ACCEPT
     );
 
     return EXIT_SUCCESS;
